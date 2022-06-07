@@ -1,0 +1,8 @@
+﻿  Automaton.cpp
+  Grammar.cpp
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\TextToRender\Grammar.cpp(19,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\TextToRender\Grammar.cpp(57,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\TextToRender\Grammar.cpp(60,22): warning C4018: '<': signed/unsigned mismatch
+  TextToRender.cpp
+  Generating Code...
+  TextToRender.vcxproj -> C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\Debug\TextToRender.exe

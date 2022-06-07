@@ -1,0 +1,9 @@
+vorm:
+- kubus
+- pyramide
+- bol
+
+kleur:
+- rood
+- blauw
+- groen
