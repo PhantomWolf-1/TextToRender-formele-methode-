@@ -24,6 +24,9 @@
     <ClCompile Include="Automaton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NDFA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grammar.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NDFA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

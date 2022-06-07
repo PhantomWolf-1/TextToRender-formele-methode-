@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include "Grammar.h"
+#include "NDFA.h"
 
 int main()
 {
@@ -32,6 +33,9 @@ int main()
     }
 
     Grammar *g = new Grammar(fileName);
+    NDFA ndfa = NDFA(*g);
+    ndfa.CreateNDFA();
+    ndfa.PrintModel();
     //KEEP IN MIND, PREVENT MEMMORY LEAKS ETC!
     delete g;
     g = NULL;

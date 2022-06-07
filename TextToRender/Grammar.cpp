@@ -30,10 +30,12 @@ Grammar::Grammar(std::string grammarFilePath)
 					if (tmp != currentHeadNode) {
 						if (!currentHeadNode.empty()) {
 							this->headAndSupNodes.push_back({currentHeadNode, currentSubNodes});
+							
 							currentSubNodes.clear();
 						}
 						std::cout << "Setting current head" << std::endl;
 						currentHeadNode = tmp;
+						this->allNodes.push_back({ tmp, true });
 						//this->headAndSupNodes[currentHeadNode] = std::vector<std::string>();
 					}
 				} 
@@ -41,6 +43,7 @@ Grammar::Grammar(std::string grammarFilePath)
 					tmp = ToLowerCase(tmp);
 					AddWordToAlphabet(tmp);
 					currentSubNodes.push_back(tmp);
+					this->allNodes.push_back({ tmp, false });
 				}
 				
 				tmp = "";
@@ -61,6 +64,12 @@ Grammar::Grammar(std::string grammarFilePath)
 				std::cout << "\t-" << this->headAndSupNodes.at(i).second[j] << std::endl;
 			}
 			std::cout << std::endl;
+		}
+		
+
+		std::cout << "\nNow Test with all nodes and booleans: " << std::endl;
+		for (int i = 0; i < this->allNodes.size(); i++) {
+			std::cout << "Node: " << this->allNodes.at(i).first << ", With value (is Head node): " <<  this->allNodes.at(i).second << std::endl;
 		}
 
 	}
@@ -113,6 +122,16 @@ std::string Grammar::ToLowerCase(std::string word)
 		});
 
 	return tempString;
+}
+
+std::vector<std::pair<std::string, std::vector<std::string>>> Grammar::GetHeadAndSupNodes()
+{
+	return this->headAndSupNodes;
+}
+
+std::vector<std::pair<std::string, bool>> Grammar::GetAllNodes()
+{
+	return this->allNodes;
 }
 
 bool Grammar::IsAlreadyInAlphabet(std::string keyword)
