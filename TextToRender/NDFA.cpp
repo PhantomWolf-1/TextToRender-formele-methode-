@@ -50,77 +50,74 @@ bool NDFA::CreateNDFA()
 		}
 	}
 
-	
 
-
-	/*int stateCount = 0;
-	State* nextHead;
-
-	for (int i = 0; i < grammar.GetHeadAndSupNodes().size(); i++) {
-		std::cout << "Head node: " << grammar.GetHeadAndSupNodes().at(i).first << std::endl;
-		State s = State(std::to_string(stateCount));
-		stateCount++;
-		if (i == 0)
-			s.SetIsStart(true);
-
-		int checkNextHead = stateCount;
-		if (!(checkNextHead++ >= grammar.GetHeadAndSupNodes().size())) {
-			tempState = new State();
-		}
-			
-
-
-		std::cout << "Sub nodes: " << std::endl;
-		for (int j = 0; j < grammar.GetHeadAndSupNodes().at(i).second.size(); j++) {
-			State next = State(std::to_string(stateCount));
-			stateCount++;
-
-			s.AddTransition(Transition(&s, grammar.GetHeadAndSupNodes().at(i).second[j], &next));
-			std::cout << "\t-" << grammar.GetHeadAndSupNodes().at(i).second[j] << std::endl;
-			s.AddTransition(Transition(s, grammar.GetHeadAndSupNodes().at(i).second[j], ));
-			if (!nextHead)
-				nextHead = new State(std::to_string(stateCount));
-				make transition to the next state
-			else
-				next.AddTransition(Transition(next, ));
-				make new next state
-		}
-		std::cout << std::endl;
-	}*/
-
-	/*int stateCount = 0;
-	State* from = NULL;
-	State* to = NULL;
-	std::vector<State> subNodes;
-	auto nodeList = grammar.GetAllNodes();
-	for (int i = 0; i < nodeList.size(); i++) {
-		if (nodeList[i].second == true) {
-			if (!from) {
-				from = new State(std::to_string(stateCount));
-				stateCount++;
-			}
-			else if (!to) {
-				to = new State(std::to_string(stateCount));
-
-				for (int j = 0; j < subNodes.size(); j++) {
-					from->AddTransition(Transition(from, ));
-				}
-				to = NULL;
-			}
-		} 
-		else {
-			State s = State(std::to_string(stateCount));
-			stateCount++;
-			subNodes.push_back(s);
-		}
-	}*/
+	if (headStates.size() != 0 && subStates.size() != 0)
+		return true;
 
 
 	return false;
 }
 
+bool IsValueInList(std::string value, std::vector<std::string> list) {
+	for (int i = 0; i < list.size(); i++) {
+		if (value == list.at(i)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool NDFA::TurnToDFA()
 {
+	std::shared_ptr<State> error = std::make_shared<State>(std::to_string(states.size()));
+	states.push_back(error);
+	std::vector<std::string> allKeywords = grammar.GetWordAlphabet();
+
+	for (int i = 0; i < states.size(); i++) {
+
+		if (!states.at(i)->GetIsStart()) {
+			std::vector<std::string> keyWordsAlreadyUsed;
+
+			std::vector<std::string> keywordsUsed;
+			for (int keywordIndex = 0; keywordIndex < allKeywords.size(); keywordIndex++) {
+				for (int j = 0; j < states.at(i)->GetTransitions().size(); j++) {
+					if (states.at(i)->GetTransitions().at(j)->GetKeyword() == allKeywords.at(keywordIndex)) {
+						keyWordsAlreadyUsed.push_back(states.at(i)->GetTransitions().at(j)->GetKeyword());
+					}
+				}
+			}
+
+			/*for (int j = 0; j < states.at(i)->GetTransitions().size(); j++) {
+				std::cout << "transition keyword to check: " << states.at(i)->GetTransitions().at(j)->GetKeyword() << std::endl;
+				for (int keywordIndex = 0; keywordIndex < allKeywords.size(); keywordIndex++) {
+					if (states.at(i)->GetTransitions().at(j)->GetKeyword() == allKeywords.at(keywordIndex)) {
+						allKeywords.erase(allKeywords.begin() + keywordIndex);
+					}
+					if (states.at(i)->GetTransitions().at(j)->GetKeyword() != allKeywords.at(keywordIndex)) {
+						if (!IsValueInList(allKeywords.at(keywordIndex), keyWordsToAdd)) {
+							std::cout << "keyword added to list: " << allKeywords.at(keywordIndex) << std::endl;
+							keyWordsToAdd.push_back(allKeywords.at(keywordIndex));
+						}
+					}
+				}
+			}*/
+			for (int addIndex = 0; addIndex < allKeywords.size(); addIndex++) {
+				bool addKeyword = true;
+				for (int k = 0; k < keyWordsAlreadyUsed.size(); k++) {
+					if (addKeyword && allKeywords.at(addIndex) == keyWordsAlreadyUsed.at(k)) {
+						addKeyword = false;
+					}
+				}
+
+				if(addKeyword)
+					states.at(i)->AddTransition(std::make_shared<Transition>(states.at(i), allKeywords.at(addIndex), error));
+				//std::cout << "transition added to error with keyword: " << keyWordsToAdd.at(addIndex) << ", for state: " << states.at(i)->GetStateName() << std::endl;
+				
+			}
+		}
+		
+	}
+
 	return false;
 }
 
@@ -147,4 +144,17 @@ void NDFA::PrintModel()
 	for (int i = 0; i < states.size(); i++) {
 		states.at(i)->PrintState();
 	}
+}
+
+bool NDFA::isDetermenistic()
+{
+	for (int i = 0; i < states.size(); i++) {
+		if (!states.at(i)->GetIsStart()) {
+			if (!states.at(i)->isDeterministic(grammar.GetWordAlphabet())) {
+				return false;
+			}
+		}
+		
+	}
+	return true;
 }

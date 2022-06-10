@@ -1,8 +1,27 @@
 ﻿  Automaton.cpp
-  Grammar.cpp
-C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\TextToRender\Grammar.cpp(19,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\TextToRender\Grammar.cpp(57,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\TextToRender\Grammar.cpp(60,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(50,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(51,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(74,21): warning C4018: '<': signed/unsigned mismatch
+  NDFA.cpp
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(50,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(51,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(74,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(19,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(22,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(35,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(38,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(42,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(62,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(76,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(82,44): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(83,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(104,36): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(106,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(144,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\NDFA.cpp(151,20): warning C4018: '<': signed/unsigned mismatch
   TextToRender.cpp
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(50,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(51,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(74,21): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  TextToRender.vcxproj -> C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender\Debug\TextToRender.exe
+  TextToRender.vcxproj -> C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\Debug\TextToRender.exe

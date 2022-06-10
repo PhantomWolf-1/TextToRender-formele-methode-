@@ -134,6 +134,11 @@ std::vector<std::pair<std::string, bool>> Grammar::GetAllNodes()
 	return this->allNodes;
 }
 
+std::vector<std::string> Grammar::GetWordAlphabet()
+{
+	return this->wordAlphabet;
+}
+
 bool Grammar::IsAlreadyInAlphabet(std::string keyword)
 {
 	for (const auto& item : this->wordAlphabet) {

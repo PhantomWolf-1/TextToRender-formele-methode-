@@ -28,6 +28,7 @@ public:
 	std::vector<Transition> GetTransitions();
 
 	void PrintModel();
+	bool isDetermenistic();
 
 };
 

@@ -24,6 +24,8 @@ public:
 	std::vector<std::pair<std::string, std::vector<std::string>>> GetHeadAndSupNodes();
 
 	std::vector<std::pair<std::string, bool>> GetAllNodes();
+
+	std::vector<std::string> GetWordAlphabet();
 };
 
 	

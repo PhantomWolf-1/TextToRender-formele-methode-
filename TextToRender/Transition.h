@@ -48,10 +48,10 @@ public:
 		std::vector<std::string> tmpAlphabet = alphabet;
 		int transitionCount = 0;
 		for (int i = 0; i < transitions.size(); i++) {
-			for (int j = 0; j < tmpAlphabet.size(); j++) {
-				if (transitions[i]->GetKeyword() == tmpAlphabet[j]) {
+			for (int j = 0; j < alphabet.size(); j++) {
+				if (transitions[i]->GetKeyword() == alphabet[j]) {
 					transitionCount++;
-					tmpAlphabet.erase(std::remove(tmpAlphabet.begin(), tmpAlphabet.end(), tmpAlphabet[j]), tmpAlphabet.end());
+					//tmpAlphabet.erase(std::remove(tmpAlphabet.begin(), tmpAlphabet.end(), tmpAlphabet[j]), tmpAlphabet.end());
 				}
 			}
 		}
@@ -67,6 +67,9 @@ public:
 
 	void PrintState() {
 		std::cout << "state: " << stateName << std::endl;
+		std::cout << "is start node: " << isStart << std::endl;
+		std::cout << "is final node: " << isFinal << std::endl;
+		
 		std::cout << "Transitions: "  << std::endl;
 		for (int i = 0; i < transitions.size(); i++) {
 			std::cout << "from: " << transitions.at(i)->GetFromState()->stateName << " ----- " << transitions.at(i)->GetKeyword() << " -----> " << transitions.at(i)->GetToState()->stateName << std::endl;
@@ -97,5 +100,9 @@ public:
 
 	void SetIsFinal(bool value) {
 		isFinal = value;
+	}
+
+	std::string GetStateName() {
+		return stateName;
 	}
 };

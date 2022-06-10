@@ -34,8 +34,14 @@ int main()
 
     Grammar *g = new Grammar(fileName);
     NDFA ndfa = NDFA(*g);
-    ndfa.CreateNDFA();
+    if (ndfa.CreateNDFA()) {
+        ndfa.TurnToDFA();
+    }
     ndfa.PrintModel();
+    std::cout << std::endl;
+
+    std::cout << "Final check to see if the DFA is determenistic, is it? " << ndfa.isDetermenistic() << std::endl;
+    //ndfa.PrintModel();
     //KEEP IN MIND, PREVENT MEMMORY LEAKS ETC!
     delete g;
     g = NULL;
