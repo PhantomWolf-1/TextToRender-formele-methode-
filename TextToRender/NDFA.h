@@ -1,6 +1,7 @@
 #pragma once
 #include "Grammar.h"
 
+
 #include <memory>
 #include "Transition.h"
 
@@ -14,9 +15,7 @@ private:
 	Grammar grammar;
 	bool NDFAdone;
 
-	void MakeTransitions(State& head, std::vector<State>& substates);
-	void MakeTransitions(std::vector<State>& substates, State& head);
-
+	std::shared_ptr<State> currentState;
 
 public:
 	NDFA(Grammar g);
@@ -25,10 +24,12 @@ public:
 	bool CreateNDFA();
 	bool TurnToDFA();
 
-	std::vector<Transition> GetTransitions();
-
 	void PrintModel();
 	bool isDetermenistic();
+
+	void CheckForNextState(std::string input);
+
+	void PrintCurrentState();
 
 };
 

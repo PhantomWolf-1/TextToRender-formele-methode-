@@ -6,6 +6,10 @@
 #include "Grammar.h"
 #include "NDFA.h"
 
+#include <sstream>
+#include <algorithm>
+#include <iterator>
+
 int main()
 {
     std::string fileName = "";
@@ -43,6 +47,33 @@ int main()
     std::cout << "Final check to see if the DFA is determenistic, is it? " << ndfa.isDetermenistic() << std::endl;
     //ndfa.PrintModel();
     //KEEP IN MIND, PREVENT MEMMORY LEAKS ETC!
+
+    std::cout << "type in the input: \n";
+    std::string input;
+    std::getline(std::cin >> std::ws, input);
+    std::cout << std::endl;
+    
+    std::cout << "Input length: " << input.length() << std::endl;
+
+    std::string tmp = "";
+    for (int i = 0; i < input.length(); i++) {
+        if (input.at(i) != ' ' && input.at(i) != ',' && input.at(i) != '.') {
+            std::cout << "input added:" << input.at(i) << "..." << std::endl;
+            tmp += input.at(i);
+        }
+            
+
+        if ((input.at(i) == ' ' || input.at(i) == ',' || input.at(i) == '.' || i == input.length()-1) && tmp.length() != 0) {
+            if (tmp != "") {
+                std::cout << "Check for the word:"<< tmp  << "..." << std::endl;
+                ndfa.CheckForNextState(tmp);
+                tmp = "";
+            }
+        }
+        
+    }
+    ndfa.PrintCurrentState();
+
     delete g;
     g = NULL;
 

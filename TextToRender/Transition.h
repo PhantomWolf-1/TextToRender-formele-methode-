@@ -17,16 +17,16 @@ public:
 	Transition(std::shared_ptr<State> fr, std::string kw, std::shared_ptr<State> t) : from(fr), keyword(kw), to(t) {};
 	~Transition() { };
 
-	State* GetFromState() {
-		return from.get();
+	std::shared_ptr<State> GetFromState() {
+		return from;
 	};
 
 	std::string GetKeyword() {
 		return keyword;
 	}
 
-	State* GetToState() {
-		return to.get();
+	std::shared_ptr<State> GetToState() {
+		return to;
 	};
 };
 
@@ -64,6 +64,15 @@ public:
 		return false;
 	};
 
+	//this method returns the next state by using a keyword  and checking it with the transitions
+	std::shared_ptr<State> GetStateFromKeyword(std::string input) {
+		for (int i = 0; i < transitions.size(); i++) {
+			if (transitions.at(i)->GetKeyword() == input) {
+				return transitions.at(i)->GetToState();
+			}
+		}
+		return nullptr;
+	}
 
 	void PrintState() {
 		std::cout << "state: " << stateName << std::endl;

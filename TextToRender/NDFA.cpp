@@ -30,6 +30,7 @@ bool NDFA::CreateNDFA()
 	start->SetIsStart(true);
 	start->AddTransition(std::make_shared<Transition>(start, headAndSubNodes.at(0).first, headStates.at(0)));
 	states.push_back(start);
+	currentState = start;
 
 	int subStateCount = 0;
 	for (int i = 0; i < headAndSubNodes.size(); i++) {
@@ -121,22 +122,6 @@ bool NDFA::TurnToDFA()
 	return false;
 }
 
-std::vector<Transition> NDFA::GetTransitions()
-{
-	return std::vector<Transition>();
-}
-
-void NDFA::MakeTransitions(State& head, std::vector<State>& substates)
-{
-	/*for (int i = 0; i < substates.size(); i++) {
-		head.AddTransition(Transition(substates[i], ))
-	}*/
-}
-
-void NDFA::MakeTransitions(std::vector<State>& substates, State& head)
-{
-
-}
 
 void NDFA::PrintModel()
 {
@@ -157,4 +142,18 @@ bool NDFA::isDetermenistic()
 		
 	}
 	return true;
+}
+
+void NDFA::CheckForNextState(std::string input)
+{
+	std::shared_ptr<State> tmp = currentState->GetStateFromKeyword(input);
+	if (tmp != nullptr)
+		currentState = tmp;
+}
+
+void NDFA::PrintCurrentState()
+{
+	std::cout << "current state is: " << currentState->GetStateName() << std::endl;
+	std::cout << "is current state an end state?: " << currentState->GetIsFinal() << std::endl;
+
 }
