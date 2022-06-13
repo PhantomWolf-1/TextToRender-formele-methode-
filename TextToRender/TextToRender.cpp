@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "Grammar.h"
 #include "NDFA.h"
+#include "converters/ShapeAndColorConverter.h"
 
 #include <sstream>
 #include <algorithm>
@@ -73,12 +74,13 @@ int main()
         
     }
     ndfa.PrintCurrentState();
+    ShapeAndColorConverter conv = ShapeAndColorConverter();
+    std::shared_ptr<RenderObject> ro = conv.GetObject(ndfa.GetTransitionsMade());
+    std::cout << "Object made: ";
+    ro->PrintInfo();
+    std::cout << std::endl;
 
     delete g;
     g = NULL;
-
-    //TODO:
-    //  - look at the basics of making a ndfa based on a grammar (examples from Hans on Brightspace)!!!!!!!!!!!!!
-    //  - look at the keywords written at the .txt file which i need to use to make the ndfa and eventually the DFA
 }
 

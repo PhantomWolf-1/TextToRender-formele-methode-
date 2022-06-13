@@ -1,7 +1,6 @@
 vorm:
 - kubus
 - pyramide
-- bol
 
 kleur:
 - rood

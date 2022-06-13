@@ -72,7 +72,16 @@ public:
 			}
 		}
 		return nullptr;
-	}
+	};
+
+	std::shared_ptr<Transition> GetTransitionFromKeyword(std::string input) {
+		for (int i = 0; i < transitions.size(); i++) {
+			if (transitions.at(i)->GetKeyword() == input) {
+				return transitions.at(i);
+			}
+		}
+		return nullptr;
+	};
 
 	void PrintState() {
 		std::cout << "state: " << stateName << std::endl;

@@ -16,6 +16,7 @@ private:
 	bool NDFAdone;
 
 	std::shared_ptr<State> currentState;
+	std::vector<std::string> transitionsMade;
 
 public:
 	NDFA(Grammar g);
@@ -30,6 +31,8 @@ public:
 	void CheckForNextState(std::string input);
 
 	void PrintCurrentState();
+
+	std::vector<std::string> GetTransitionsMade();
 
 };
 

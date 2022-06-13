@@ -142,12 +142,17 @@
     <ClCompile Include="Automaton.cpp" />
     <ClCompile Include="Grammar.cpp" />
     <ClCompile Include="NDFA.cpp" />
+    <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="converters\ShapeAndColorConverter.cpp" />
     <ClCompile Include="TextToRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Automaton.h" />
+    <ClInclude Include="converters\Converter.h" />
     <ClInclude Include="Grammar.h" />
     <ClInclude Include="NDFA.h" />
+    <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="converters\ShapeAndColorConverter.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

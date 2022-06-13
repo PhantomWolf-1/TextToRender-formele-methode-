@@ -147,8 +147,11 @@ bool NDFA::isDetermenistic()
 void NDFA::CheckForNextState(std::string input)
 {
 	std::shared_ptr<State> tmp = currentState->GetStateFromKeyword(input);
-	if (tmp != nullptr)
+	if (tmp != nullptr) {
+		transitionsMade.push_back(currentState->GetTransitionFromKeyword(input)->GetKeyword());
 		currentState = tmp;
+	}
+		
 }
 
 void NDFA::PrintCurrentState()
@@ -156,4 +159,9 @@ void NDFA::PrintCurrentState()
 	std::cout << "current state is: " << currentState->GetStateName() << std::endl;
 	std::cout << "is current state an end state?: " << currentState->GetIsFinal() << std::endl;
 
+}
+
+std::vector<std::string> NDFA::GetTransitionsMade()
+{
+	return transitionsMade;
 }
