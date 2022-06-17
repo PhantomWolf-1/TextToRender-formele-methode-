@@ -1,2 +1,7 @@
-﻿  RenderObject.cpp
+﻿  TextToRender.cpp
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(50,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(51,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(69,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(78,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\TextToRender\Transition.h(92,21): warning C4018: '<': signed/unsigned mismatch
   TextToRender.vcxproj -> C:\Users\Gebruiker\Desktop\Formele methoden\TextToRender-formele-methode-\Debug\TextToRender.exe

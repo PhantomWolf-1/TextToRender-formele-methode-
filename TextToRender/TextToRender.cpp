@@ -11,6 +11,59 @@
 #include <algorithm>
 #include <iterator>
 
+
+
+void TestApplication()
+{
+    std::string englishGrammar = "grammar.txt";
+    std::string dutchGrammar = "grammatica.txt";
+
+    Grammar* g = new Grammar(dutchGrammar);
+    NDFA ndfa = NDFA(*g);
+    if (ndfa.CreateNDFA()) {
+            ndfa.TurnToDFA();
+     }
+
+    std::string testInput1 = "ik wil de vorm kubus met de kleur rood";
+    std::string testInput2 = "vorm kubus kleur blauw";
+    std::string testInput3 = "ik wil een groene bol";
+    std::string testInput4 = "Ik wil de vorm pyramide met de kleur groen, maar toch wil ik gaan voor de vorm kubus aangezien die bij de kleur mooier is";
+
+    ndfa.LoopThroughModel(testInput1);
+    ndfa.PrintCurrentState();
+    if (ndfa.IsCurrentStateFinal())
+        std::cout << "Input 1 is valid" << std::endl;
+    else
+        std::cout << "Input 1 is invalid" << std::endl;
+    ndfa.ResetValues();
+
+    ndfa.LoopThroughModel(testInput2);
+    ndfa.PrintCurrentState();
+    if (ndfa.IsCurrentStateFinal())
+        std::cout << "Input 2 is valid" << std::endl;
+    else
+        std::cout << "Input 2 is invalid" << std::endl;
+    ndfa.ResetValues();
+
+    ndfa.LoopThroughModel(testInput3);
+    ndfa.PrintCurrentState();
+    if (ndfa.IsCurrentStateFinal())
+        std::cout << "Input 3 is valid" << std::endl;
+    else
+        std::cout << "Input 3 is invalid" << std::endl;
+    ndfa.ResetValues();
+
+    ndfa.LoopThroughModel(testInput4);
+    ndfa.PrintCurrentState();
+    if (ndfa.IsCurrentStateFinal())
+        std::cout << "Input 4 is valid" << std::endl;
+    else
+        std::cout << "Input 4 is invalid" << std::endl;
+    ndfa.ResetValues();
+
+}
+
+
 int main()
 {
     std::string fileName = "";
@@ -56,23 +109,7 @@ int main()
     
     std::cout << "Input length: " << input.length() << std::endl;
 
-    std::string tmp = "";
-    for (int i = 0; i < input.length(); i++) {
-        if (input.at(i) != ' ' && input.at(i) != ',' && input.at(i) != '.') {
-            std::cout << "input added:" << input.at(i) << "..." << std::endl;
-            tmp += input.at(i);
-        }
-            
-
-        if ((input.at(i) == ' ' || input.at(i) == ',' || input.at(i) == '.' || i == input.length()-1) && tmp.length() != 0) {
-            if (tmp != "") {
-                std::cout << "Check for the word:"<< tmp  << "..." << std::endl;
-                ndfa.CheckForNextState(tmp);
-                tmp = "";
-            }
-        }
-        
-    }
+    ndfa.LoopThroughModel(input);
     ndfa.PrintCurrentState();
     ShapeAndColorConverter conv = ShapeAndColorConverter();
     std::shared_ptr<RenderObject> ro = conv.GetObject(ndfa.GetTransitionsMade());
@@ -80,7 +117,15 @@ int main()
     ro->PrintInfo();
     std::cout << std::endl;
 
+    ndfa.ResetValues();
+
     delete g;
     g = NULL;
+
+    //TestApplication();
 }
+
+
+
+
 

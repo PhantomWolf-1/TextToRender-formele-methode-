@@ -30,6 +30,7 @@ bool NDFA::CreateNDFA()
 	start->SetIsStart(true);
 	start->AddTransition(std::make_shared<Transition>(start, headAndSubNodes.at(0).first, headStates.at(0)));
 	states.push_back(start);
+	startState = start;
 	currentState = start;
 
 	int subStateCount = 0;
@@ -144,6 +145,26 @@ bool NDFA::isDetermenistic()
 	return true;
 }
 
+void NDFA::LoopThroughModel(std::string input)
+{
+	std::string tmp = "";
+	for (int i = 0; i < input.length(); i++) {
+		if (input.at(i) != ' ' && input.at(i) != ',' && input.at(i) != '.') {
+			//std::cout << "input added:" << input.at(i) << "..." << std::endl;
+			tmp += input.at(i);
+		}
+
+
+		if ((input.at(i) == ' ' || input.at(i) == ',' || input.at(i) == '.' || i == input.length() - 1) && tmp.length() != 0) {
+			if (tmp != "") {
+				//std::cout << "Check for the word:" << tmp << "..." << std::endl;
+				CheckForNextState(tmp);
+				tmp = "";
+			}
+		}
+	}
+}
+
 void NDFA::CheckForNextState(std::string input)
 {
 	std::shared_ptr<State> tmp = currentState->GetStateFromKeyword(input);
@@ -161,7 +182,23 @@ void NDFA::PrintCurrentState()
 
 }
 
+bool NDFA::IsCurrentStateFinal()
+{
+	if (currentState != nullptr)
+		return currentState->GetIsFinal();
+
+	return false;
+}
+
 std::vector<std::string> NDFA::GetTransitionsMade()
 {
 	return transitionsMade;
 }
+
+void NDFA::ResetValues()
+{
+	this->currentState = startState;
+	this->transitionsMade.clear();
+}
+
+
