@@ -111,11 +111,17 @@ int main()
 
     ndfa.LoopThroughModel(input);
     ndfa.PrintCurrentState();
-    ShapeAndColorConverter conv = ShapeAndColorConverter();
-    std::shared_ptr<RenderObject> ro = conv.GetObject(ndfa.GetTransitionsMade());
-    std::cout << "Object made: ";
-    ro->PrintInfo();
-    std::cout << std::endl;
+    if (ndfa.IsCurrentStateFinal()) {
+        ShapeAndColorConverter conv = ShapeAndColorConverter();
+        std::shared_ptr<RenderObject> ro = conv.GetObject(ndfa.GetTransitionsMade());
+        std::cout << "Object made: ";
+        ro->PrintInfo();
+        std::cout << std::endl;
+    }
+    else {
+        std::cout << "\ncurrent input is invalid... srry" << std::endl;
+    }
+    
 
     ndfa.ResetValues();
 
